@@ -15,7 +15,7 @@ export async function connectToDb() {
     
         console.log("Conectado ao banco de dados com sucesso!");
     
-        await sequelize.sync({ force: true });
+        await sequelize.sync();
     
         console.log("Tabelas criadas com sucesso!")
     }catch (err) {
