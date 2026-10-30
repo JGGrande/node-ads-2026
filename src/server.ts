@@ -2,10 +2,12 @@ import express from "express";
 import { connectToDb } from "./database/sequelize";
 import { Music } from "./models/music";
 import { createMusic, deleteMusic, findMusicById, listAllMusics, updateMusic } from "./controllers/music";
+import cors from "cors";
 
 const app = express();
 
 app.use(express.json());
+app.use(cors({ origin: "*" }))
 
 connectToDb()
 .then(()=> {
