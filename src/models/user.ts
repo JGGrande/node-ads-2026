@@ -7,6 +7,15 @@ export class User extends Model {
     declare cpf: string;
     declare email: string;
     declare password: string;
+
+    public convertToResponse() {
+        return {
+            id: this.id,
+            name: this.name,
+            cpf: this.cpf,
+            email: this.email
+        }
+    }
 }
 
 User.init({
