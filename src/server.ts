@@ -4,6 +4,7 @@ import { Music } from "./models/music";
 import { createMusic, deleteMusic, findMusicById, listAllMusics, updateMusic } from "./controllers/music";
 import cors from "cors";
 import dotenv from "dotenv";
+import { createUser } from "./controllers/user";
 
 dotenv.config();
 
@@ -16,6 +17,8 @@ connectToDb()
 .then(()=> {
     new Music();
 });
+
+app.post("/users", createUser);
 
 app.post("/musics", createMusic); // C
 app.get("/musics", listAllMusics);  // R
