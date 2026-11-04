@@ -1,12 +1,15 @@
 import { Sequelize } from "sequelize";
+import dotenv from "dotenv";
+
+dotenv.config();
 
 export const sequelize = new Sequelize({
     dialect: "mysql",
-    database: "musicas",
-    username: "root",
-    password: "",
-    port: 3306,
-    host: "localhost"
+    database: process.env.MYSQL_DATABASE!,
+    username: process.env.MYSQL_USERNAME!,
+    password: process.env.MYSQL_PASSWORD!,
+    port: Number(process.env.MYSQL_PORT!),
+    host: process.env.MYSQL_HOST!
 });
 
 export async function connectToDb() {

@@ -3,6 +3,9 @@ import { connectToDb } from "./database/sequelize";
 import { Music } from "./models/music";
 import { createMusic, deleteMusic, findMusicById, listAllMusics, updateMusic } from "./controllers/music";
 import cors from "cors";
+import dotenv from "dotenv";
+
+dotenv.config();
 
 const app = express();
 
@@ -20,6 +23,6 @@ app.get("/musics/:id", findMusicById);
 app.put("/musics/:id", updateMusic); // U
 app.delete("/musics/:id", deleteMusic); //D
 
-app.listen(3000, () => {
+app.listen(Number(process.env.SERVER_PORT!), () => {
     console.log("Servidor rodando em http://localhost:3000");
 })
