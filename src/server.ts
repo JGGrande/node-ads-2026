@@ -6,6 +6,7 @@ import cors from "cors";
 import dotenv from "dotenv";
 import { createUser } from "./controllers/user";
 import { login } from "./controllers/auth";
+import { authMiddleware } from "./middlewares/authMiddleware";
 
 dotenv.config();
 
@@ -20,8 +21,9 @@ connectToDb()
 });
 
 app.post("/auth/login", login);
-
 app.post("/users", createUser);
+
+app.use(authMiddleware);
 
 app.post("/musics", createMusic); // C
 app.get("/musics", listAllMusics);  // R
